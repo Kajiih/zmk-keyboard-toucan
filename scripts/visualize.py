@@ -24,7 +24,7 @@ def parse_and_visualize():
     clean_tokens = []
     for token in tokens:
         t = token.replace("&kp ", "").replace("&", "")
-        t = t.replace("hm_l ", "").replace("hm_r ", "").replace("hm_shift_l ", "").replace("hm_shift_r ", "")
+        t = t.replace("hm_l ", "").replace("hm_r ", "").replace("hm_shift_l ", "").replace("hm_shift_r ", "").replace("hm_comma_r ", "")
         clean_tokens.append(t)
         
     if len(clean_tokens) < 42:

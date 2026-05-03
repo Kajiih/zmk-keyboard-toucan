@@ -7,6 +7,7 @@
 #define NAV  1
 #define SYM  2
 #define ADJ  3
+#define HYPER LC(LA(LS(LGUI)))
 
 // Physical key positions mapped for positional hold-tap triggers
 #define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
@@ -108,6 +109,19 @@
             hold-trigger-on-release;
             retro-tap;
         };
+
+        hm_comma_r: hm_comma_r {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <1>;
+            tapping-term-ms = <250>;
+            quick-tap-ms = <150>;
+            flavor = "balanced";
+            bindings = <&kp>, <&comma_morph>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <KEYS_L THUMBS>;
+            hold-trigger-on-release;
+            retro-tap;
+        };
     };
 
     keymap {
@@ -117,7 +131,7 @@
             display-name = "BASE";
             bindings = <
                 &kp TAB   &kp B          &kp L          &kp D          &kp W          &kp Z       &sqt_morph &kp F          &kp O          &kp U          &kp J          &kp SEMI
-                &kp ESC   &hm_l LCTRL N  &hm_l LALT R   &hm_l LGUI T   &hm_shift_l LSHFT S &kp G  &kp Y      &hm_shift_r RSHFT H &hm_r RGUI A &hm_r RALT E &hm_r RCTRL I &comma_morph
+                &hm_l HYPER ESC &hm_l LCTRL N  &hm_l LALT R   &hm_l LGUI T   &hm_shift_l LSHFT S &kp G  &kp Y      &hm_shift_r RSHFT H &hm_r RGUI A &hm_r RALT E &hm_r RCTRL I &hm_comma_r HYPER
                 &kp GRAVE &kp Q          &kp X          &kp M          &kp C          &kp V       &kp K      &kp P          &dot_morph     &minus_morph   &fslh_morph    &kp BSLH
                                                         &caps_word     &mo 1          &kp SPACE   &kp RET    &mo 2          &kp BSPC
             >;
