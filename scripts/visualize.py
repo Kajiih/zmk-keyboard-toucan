@@ -8,6 +8,7 @@ def render_layer(name, bindings_text, col_width, sep_line, thumb_sep):
     for token in tokens:
         t = token.replace("&kp ", "").replace("&", "")
         t = t.replace("hm_l ", "").replace("hm_r ", "").replace("hm_fast_l ", "").replace("hm_fast_r ", "").replace("hm_comma_r ", "").replace("hm_dot_r ", "")
+        t = t.replace(" 0", "")
         clean_tokens.append(t)
         
     if len(clean_tokens) < 42:

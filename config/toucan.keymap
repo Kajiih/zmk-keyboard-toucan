@@ -47,6 +47,19 @@
         };
     };
 
+    macros {
+        macro_comma: macro_comma {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&comma_morph>;
+        };
+        macro_dot: macro_dot {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&dot_morph>;
+        };
+    };
+
     // ZMK Mod-Morph Behaviors for custom shifted punctuation: https://zmk.dev/docs/behaviors/mod-morph
     behaviors {
         comma_morph: comma_morph {
@@ -107,18 +120,16 @@
         };
 
         hm_comma_r: hm_comma_r {
-            HRM_BASE_CONFIG
+            HRM_KP_CONFIG
             HRM_TIMINGS_SLOW
-            #binding-cells = <1>;
-            bindings = <&kp>, <&comma_morph>;
+            bindings = <&kp>, <&macro_comma>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
         };
 
         hm_dot_r: hm_dot_r {
-            HRM_BASE_CONFIG
+            HRM_KP_CONFIG
             HRM_TIMINGS_SLOW
-            #binding-cells = <1>;
-            bindings = <&kp>, <&dot_morph>;
+            bindings = <&kp>, <&macro_dot>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
         };
     };
@@ -130,8 +141,8 @@
             display-name = "BASE";
             bindings = <
                 &kp TAB   &kp B          &kp L          &kp D          &kp W          &kp Z       &sqt_morph &kp F          &kp O          &kp U          &kp J          &kp SEMI
-                &hm_l HYPER ESC &hm_l LCTRL N  &hm_l LALT R   &hm_l LGUI T   &hm_fast_l LSHFT S &kp G  &kp Y      &hm_fast_r RSHFT H &hm_r RGUI A &hm_r RALT E &hm_r RCTRL I &hm_comma_r HYPER
-                &kp GRAVE &kp Q          &kp X          &hm_l MEH M    &kp C          &kp V       &kp K      &kp P          &hm_dot_r MEH  &minus_morph   &fslh_morph    &kp BSLH
+                &hm_l HYPER ESC &hm_l LCTRL N  &hm_l LALT R   &hm_l LGUI T   &hm_fast_l LSHFT S &kp G  &kp Y      &hm_fast_r RSHFT H &hm_r RGUI A &hm_r RALT E &hm_r RCTRL I &hm_comma_r HYPER 0
+                &kp GRAVE &kp Q          &kp X          &hm_l MEH M    &kp C          &kp V       &kp K      &kp P          &hm_dot_r MEH 0 &minus_morph   &fslh_morph    &kp BSLH
                                                         &caps_word     &mo 1          &kp SPACE   &kp RET    &mo 2          &kp BSPC
             >;
         };
